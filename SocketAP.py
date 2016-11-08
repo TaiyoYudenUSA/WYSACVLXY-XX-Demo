@@ -1,7 +1,7 @@
 #This code was tested on Python 2.7.12 on a Windows 7 machine
 #pyserial must be installed for script to work
 
-#Tested with TYSA-W version 2.00.00 
+#Tested with version 2.00.00 
 #API document: TY_WLAN_WYSACVLXY-XX_AppAPI_V2.00_20160315
 #To get a copy of the API document visit http://www.ty-top.com/ and contact your local sales office.
 
@@ -30,7 +30,7 @@ def main():
     ser.write("WUSA1\r\n")
     print readResponse(ser) #Should get ACK back
 
-    print "Starting DHCP..."
+    print "Enabling DHCP..."
     ser.write("WUDC1\r\n")
     print readResponse(ser) #Should get ACK back
 
