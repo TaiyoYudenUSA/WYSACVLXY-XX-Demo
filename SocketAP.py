@@ -25,6 +25,10 @@ def main():
     print "Setting IP..."
     ser.write("WSTU105192.168.001.254\r\n")
     print readResponse(ser) #Should get ACK back
+    
+    print "Setting Subnet Mask..."
+    ser.write("WSTU106255.255.255.000\r\n")
+    print readResponse(ser) #Should get ACK back
 
     print "Starting uAP...."
     ser.write("WUSA1\r\n")
@@ -51,6 +55,8 @@ def main():
     socketConnected=False
     while True:
         line = ser.readline()
+        #When connection is established, line should be "CON0,<Client MAC Address>"
+        #User must update code to correspond to MAC address of their client Eval Board.
         if len(line) > 0 and apConnected == False and line == "CON0,AC3FA4668DF0\r\n":
             print line
             print "AP Connected!!! Waiting for socket connection..."
